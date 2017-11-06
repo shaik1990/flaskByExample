@@ -5,8 +5,12 @@
     <title>Headlines Page</title>
 </head>
 <body>
+<div id="header">
 <h1>Top Headlines from RSS Feeds</h1>
-<h2>Current weather</h2>
+</div>
+
+<div id="main">
+    <h2>Current weather</h2>
 <form>
     <input type="text" name="city" placeholder="weather search">
     <input type="submit" value="Submit">
@@ -44,5 +48,30 @@
     <hr/>
 {% endfor %}
 
+</div>
+
+
+
 </body>
+
+<style>
+    html{
+        font-family: Arial;
+        background: white;
+    }
+
+    body{
+        background:lightgray;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    #header{
+        padding-top: 5px;
+        background: lightsteelblue;
+    }
+    #main{
+        padding-left: 10px;
+    }
+</style>
+
 </html>
