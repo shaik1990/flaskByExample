@@ -5,6 +5,12 @@ static/
 credentials.yml
 flaskByExample.py
 *.pyc
-dbconfig.py
+Crime Map Project/dbconfig.py
+.idea/
+
+
+<<<<<<< HEAD
 __init__.py
 db_setup.py
+=======
+>>>>>>> 9c1090956f4c59beaea2a581914cc7b172b8fd58
