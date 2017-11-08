@@ -4,3 +4,5 @@
 static/
 credentials.yml
 flaskByExample.py
+*.pyc
+dbconfig.py
