@@ -9,11 +9,3 @@ cursor = ''
 def db_connect():
     global cursor
     cursor = connection.cursor()
-
-
-#
-# try:
-#     with connection.cursor() as cursor:
-#         global cursor
-#         # sql = "CREATE DATABASE IF NOT EXISTS crimemap"
-#         # cursor.execute(sql)
