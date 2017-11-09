@@ -21,10 +21,10 @@ class DBHelper:
         connection = self.connect()
         try:
             query = "insert into crimes (description) " \
-                    "values ('{}');".format(data)
+                    "values (%s);"  # str.format() is not used
 
             with connection.cursor() as cursor:
-                cursor.execute(query)
+                cursor.execute(query, data) #cursor.execute will automatically escape special characters to mitigate SQL injection
                 connection.commit()
         finally:
             connection.close()
