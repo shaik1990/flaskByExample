@@ -1,7 +1,6 @@
 .yml
 .idea
 .xml
-static/
 credentials.yml
 flaskByExample.py
 *.pyc

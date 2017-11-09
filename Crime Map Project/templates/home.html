@@ -2,12 +2,13 @@
 <html lang="en">
 <head>
     <link type="text/css" rel="stylesheet" href="{{ url_for('static',
-            filename = 'css/style.css') }}" />
+            filename = 'css/style.css') }}"/>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js">
     </script>
     <script type="text/javascript">
         var map;
         var marker;
+
         function initialize() {
             var mapOptions = {
                 center: new google.maps.LatLng(38.9586310, -77.3570030),
@@ -18,20 +19,36 @@
 
                 placeMarker(event.latLng);
             });
-        }
-        function placeMarker(location) {
-            if(marker){
-                marker.setPosition(location);
-            }
-            else{
-                marker = new google.maps.Marker({
-               position: location, map:map
-            });
-            }
-            document.getElementById('latitude').value = location.lat();
-            document.getElementById('longitude').value = location.lng();
+            placeCrimes({{ crimes | safe }});
 
         }
+
+        {#        function placeMarker(location) {#}
+        {#            if(marker){#}
+        {#                marker.setPosition(location);#}
+        {#            }#}
+        {#            else{#}
+        {#                marker = new google.maps.Marker({#}
+        {#               position: location, map:map#}
+        {#            });#}
+        {#            }#}
+        {#            document.getElementById('latitude').value = location.lat();#}
+        {#            document.getElementById('longitude').value = location.lng();#}
+        {##}
+        {#        }#}
+
+        function placeCrimes(crimes) {
+            for (i = 0; i < crimes.length; i++) {
+                crime = new google.maps.Marker({
+                        position: new google.maps.LatLng(crimes[i].latitude, crimes[i].longitude),
+                        map: map,
+                        title: crimes[i].date + "\n" +
+                        crimes[i].category + "\n" + crimes[i].description
+                    }
+                );
+            }
+        }
+
 
     </script>
 

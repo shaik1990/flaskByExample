@@ -37,3 +37,24 @@ class DBHelper:
                 connection.commit()
         finally:
             connection.close()
+
+    def add_crime(self, category, date, latitude, longitude, description):
+        connection = self.connect()
+        try:
+            query = "INSERT INTO crimes(category _in, date_in, latitude, longitude, description)" \
+                    "VALUES (%s,%s,%s,%s,%s)"
+            with connection.cursor() as cursor:
+                cursor.execute(query,(category, date, latitude, longitude, description))
+                connection.commit()
+        except Exception as e:
+            print(e)
+        finally:
+            connection.close()
+    def get_all_crimes(self):
+        return [{ 'latitude': 38.9586310,
+                  'longitude': -77.3570030,
+                  'date': "2017-11-04",
+                  'category': "Break-in",
+                  'description': "Test Description"
+                }]
+
